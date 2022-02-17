@@ -50,7 +50,7 @@ namespace DotNetOpenAuth.OAuth {
 		/// The signature.
 		/// </returns>
 		protected override byte[] Sign(byte[] signedPayload) {
-			using (var algorithm = HMACSHA1.Create()) {
+			using (var algorithm = HMACSHA1.Create("HMACSHA1")) {
 				algorithm.Key = Encoding.ASCII.GetBytes(this.GetConsumerAndTokenSecretString());
 				return algorithm.ComputeHash(signedPayload);
 			}
